@@ -1,4 +1,5 @@
 class MaxIntSet
+  attr_reader :store
   def initialize(max)
     raise ArgumentError if max < 1 || !max.is_a?(Integer)
     @max = max
@@ -9,7 +10,7 @@ class MaxIntSet
     if is_valid?(num)
       @store[num] = true
     else
-      raise "Elements must be integers from 0 to #{@max}"
+      raise "Out of bounds"
     end
   end
 
@@ -88,8 +89,10 @@ class ResizingIntSet
   end
 
   def remove(num)
-    self[num].delete(num)
-    @count -= 1
+    if self.include?(num)
+      self[num].delete(num)
+      @count -= 1
+    end
   end
 
   def include?(num)

@@ -1,4 +1,4 @@
-include Enumerable
+
 class Node
   attr_reader :key
   attr_accessor :val, :next, :prev
@@ -26,6 +26,7 @@ class Node
 end
 
 class LinkedList
+  include Enumerable
   attr_reader :head, :tail
   def initialize
     @head = Node.new
@@ -53,6 +54,7 @@ class LinkedList
 
   def get(key)
     each { |node| return node.val if node.key == key }
+
   end
 
   def include?(key)

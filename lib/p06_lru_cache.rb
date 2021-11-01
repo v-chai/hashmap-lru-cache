@@ -3,7 +3,7 @@ require_relative 'p04_linked_list'
 
 class LRUCache
   include Enumerable
-  attr_reader :prc, :max, :store, :map
+  attr_reader :prc, :max
   def initialize(max, prc)
     @map = HashMap.new
     @store = LinkedList.new
@@ -31,7 +31,7 @@ class LRUCache
   end
 
   private
-
+  attr_reader :store, :map
 
   def calc!(key)
     # suggested helper method; insert an (un-cached) key
